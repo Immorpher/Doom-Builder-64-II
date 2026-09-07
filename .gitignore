@@ -1,0 +1,6 @@
+*.sln
+/.vs
+*.cache
+/Source/Core/obj
+UpgradeLog.htm
+*.force
