@@ -4227,6 +4227,17 @@
             </summary>
             <param name="menu">The menu to add to Doom Builder.</param>
         </member>
+        <member name="M:CodeImp.DoomBuilder.Windows.IMainForm.AddMenu(System.Windows.Forms.ToolStripMenuItem,CodeImp.DoomBuilder.Windows.MenuSection)">
+            <summary>
+            This adds a menu or menu item to the Doom Builder menu strip in a specific location.
+            <para>
+            NOTE: When the Tag property of menu items is set with a string, this changes the
+            tag to a fully qualified action name by prefixing it with the assembly name.
+            </para>
+            </summary>
+            <param name="menu">The menu to add to Doom Builder.</param>
+            <param name="section">The location where to insert the menu or item.</param>
+        </member>
         <member name="M:CodeImp.DoomBuilder.Windows.IMainForm.RemoveMenu(System.Windows.Forms.ToolStripMenuItem)">
             <summary>
             This removes a menu from the Doom Builder menu strip.
@@ -4244,6 +4255,11 @@
         <member name="M:CodeImp.DoomBuilder.Windows.IMainForm.AddButton(System.Windows.Forms.ToolStripItem)">
             <summary>
             This adds a custom button to the toolbar.
+            </summary>
+        </member>
+        <member name="M:CodeImp.DoomBuilder.Windows.IMainForm.AddButton(System.Windows.Forms.ToolStripItem,CodeImp.DoomBuilder.Windows.ToolbarSection)">
+            <summary>
+            This adds a custom button to a specific section in the toolbar. Note that the visibility of the button will be controlled by the user's preferences of that section!
             </summary>
         </member>
         <member name="M:CodeImp.DoomBuilder.Windows.IMainForm.RemoveButton(System.Windows.Forms.ToolStripItem)">
@@ -4836,355 +4852,405 @@
             Called when the user closes the Preferences dialog by either accepting the changes or cancelling.
             </summary>
         </member>
+        <member name="M:CodeImp.DoomBuilder.Plugins.Plug.OnActionBegin(CodeImp.DoomBuilder.Actions.Action)">
+            <summary>
+            Called when an Action begins.
+            </summary>
+        </member>
+        <member name="M:CodeImp.DoomBuilder.Plugins.Plug.OnActionEnd(CodeImp.DoomBuilder.Actions.Action)">
+            <summary>
+            Called when an Action ends.
+            </summary>
+        </member>
+        <member name="M:CodeImp.DoomBuilder.Plugins.Plug.OnEditEngage(CodeImp.DoomBuilder.Editing.EditMode,CodeImp.DoomBuilder.Editing.EditMode)">
+            <summary>
+            Called when an Editing Mode engages
+            </summary>
+        </member>
+        <member name="M:CodeImp.DoomBuilder.Plugins.Plug.OnEditDisengage(CodeImp.DoomBuilder.Editing.EditMode,CodeImp.DoomBuilder.Editing.EditMode)">
+            <summary>
+            Called when an Editing Mode disengages
+            </summary>
+        </member>
+        <member name="M:CodeImp.DoomBuilder.Plugins.Plug.OnEditCancel">
+            <summary>
+            Called when an Editing Mode is cancelled
+            </summary>
+        </member>
+        <member name="M:CodeImp.DoomBuilder.Plugins.Plug.OnEditAccept">
+            <summary>
+            Called when an Editing Mode is accepted
+            </summary>
+        </member>
         <member name="T:CodeImp.DoomBuilder.Properties.Resources">
             <summary>
-              A strongly-typed resource class, for looking up localized strings, etc.
+              Une classe de ressource fortement typée destinée, entre autres, à la consultation des chaînes localisées.
             </summary>
         </member>
         <member name="P:CodeImp.DoomBuilder.Properties.Resources.ResourceManager">
             <summary>
-              Returns the cached ResourceManager instance used by this class.
+              Retourne l'instance ResourceManager mise en cache utilisée par cette classe.
             </summary>
         </member>
         <member name="P:CodeImp.DoomBuilder.Properties.Resources.Culture">
             <summary>
-              Overrides the current thread's CurrentUICulture property for all
-              resource lookups using this strongly typed resource class.
+              Remplace la propriété CurrentUICulture du thread actuel pour toutes
+              les recherches de ressources à l'aide de cette classe de ressource fortement typée.
+            </summary>
+        </member>
+        <member name="P:CodeImp.DoomBuilder.Properties.Resources.Angle">
+            <summary>
+              Recherche une ressource localisée de type System.Drawing.Bitmap.
             </summary>
         </member>
         <member name="P:CodeImp.DoomBuilder.Properties.Resources.CLogo">
             <summary>
-              Looks up a localized resource of type System.Drawing.Bitmap.
+              Recherche une ressource localisée de type System.Drawing.Bitmap.
             </summary>
         </member>
         <member name="P:CodeImp.DoomBuilder.Properties.Resources.Close">
             <summary>
-              Looks up a localized resource of type System.Drawing.Bitmap.
+              Recherche une ressource localisée de type System.Drawing.Bitmap.
             </summary>
         </member>
         <member name="P:CodeImp.DoomBuilder.Properties.Resources.ColorPick">
             <summary>
-              Looks up a localized resource of type System.Drawing.Bitmap.
+              Recherche une ressource localisée de type System.Drawing.Bitmap.
             </summary>
         </member>
         <member name="P:CodeImp.DoomBuilder.Properties.Resources.Copy">
             <summary>
-              Looks up a localized resource of type System.Drawing.Bitmap.
+              Recherche une ressource localisée de type System.Drawing.Bitmap.
             </summary>
         </member>
         <member name="P:CodeImp.DoomBuilder.Properties.Resources.Cut">
             <summary>
-              Looks up a localized resource of type System.Drawing.Bitmap.
+              Recherche une ressource localisée de type System.Drawing.Bitmap.
             </summary>
         </member>
         <member name="P:CodeImp.DoomBuilder.Properties.Resources.ErrorLarge">
             <summary>
-              Looks up a localized resource of type System.Drawing.Bitmap.
+              Recherche une ressource localisée de type System.Drawing.Bitmap.
             </summary>
         </member>
         <member name="P:CodeImp.DoomBuilder.Properties.Resources.Failed">
             <summary>
-              Looks up a localized resource of type System.Drawing.Bitmap.
+              Recherche une ressource localisée de type System.Drawing.Bitmap.
             </summary>
         </member>
         <member name="P:CodeImp.DoomBuilder.Properties.Resources.File">
             <summary>
-              Looks up a localized resource of type System.Drawing.Bitmap.
+              Recherche une ressource localisée de type System.Drawing.Bitmap.
             </summary>
         </member>
         <member name="P:CodeImp.DoomBuilder.Properties.Resources.Filter">
             <summary>
-              Looks up a localized resource of type System.Drawing.Bitmap.
+              Recherche une ressource localisée de type System.Drawing.Bitmap.
             </summary>
         </member>
         <member name="P:CodeImp.DoomBuilder.Properties.Resources.Folder">
             <summary>
-              Looks up a localized resource of type System.Drawing.Bitmap.
+              Recherche une ressource localisée de type System.Drawing.Bitmap.
             </summary>
         </member>
         <member name="P:CodeImp.DoomBuilder.Properties.Resources.Grid2">
             <summary>
-              Looks up a localized resource of type System.Drawing.Bitmap.
+              Recherche une ressource localisée de type System.Drawing.Bitmap.
             </summary>
         </member>
         <member name="P:CodeImp.DoomBuilder.Properties.Resources.Grid2_arrowup">
             <summary>
-              Looks up a localized resource of type System.Drawing.Bitmap.
+              Recherche une ressource localisée de type System.Drawing.Bitmap.
             </summary>
         </member>
         <member name="P:CodeImp.DoomBuilder.Properties.Resources.Grid4">
             <summary>
-              Looks up a localized resource of type System.Drawing.Bitmap.
+              Recherche une ressource localisée de type System.Drawing.Bitmap.
             </summary>
         </member>
         <member name="P:CodeImp.DoomBuilder.Properties.Resources.Help">
             <summary>
-              Looks up a localized resource of type System.Drawing.Bitmap.
+              Recherche une ressource localisée de type System.Drawing.Bitmap.
             </summary>
         </member>
         <member name="P:CodeImp.DoomBuilder.Properties.Resources.Hourglass">
             <summary>
-              Looks up a localized resource of type System.Drawing.Bitmap.
+              Recherche une ressource localisée de type System.Drawing.Bitmap.
             </summary>
         </member>
         <member name="P:CodeImp.DoomBuilder.Properties.Resources.KnownTextureSet">
             <summary>
-              Looks up a localized resource of type System.Drawing.Bitmap.
+              Recherche une ressource localisée de type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:CodeImp.DoomBuilder.Properties.Resources.List">
+            <summary>
+              Recherche une ressource localisée de type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:CodeImp.DoomBuilder.Properties.Resources.List_Images">
+            <summary>
+              Recherche une ressource localisée de type System.Drawing.Bitmap.
             </summary>
         </member>
         <member name="P:CodeImp.DoomBuilder.Properties.Resources.mergegeometry">
             <summary>
-              Looks up a localized resource of type System.Drawing.Bitmap.
+              Recherche une ressource localisée de type System.Drawing.Bitmap.
             </summary>
         </member>
         <member name="P:CodeImp.DoomBuilder.Properties.Resources.mergegeometry2">
             <summary>
-              Looks up a localized resource of type System.Drawing.Bitmap.
+              Recherche une ressource localisée de type System.Drawing.Bitmap.
             </summary>
         </member>
         <member name="P:CodeImp.DoomBuilder.Properties.Resources.MissingTexture">
             <summary>
-              Looks up a localized resource of type System.Drawing.Bitmap.
+              Recherche une ressource localisée de type System.Drawing.Bitmap.
             </summary>
         </member>
         <member name="P:CodeImp.DoomBuilder.Properties.Resources.Monster2">
             <summary>
-              Looks up a localized resource of type System.Drawing.Bitmap.
+              Recherche une ressource localisée de type System.Drawing.Bitmap.
             </summary>
         </member>
         <member name="P:CodeImp.DoomBuilder.Properties.Resources.Monster3">
             <summary>
-              Looks up a localized resource of type System.Drawing.Bitmap.
+              Recherche une ressource localisée de type System.Drawing.Bitmap.
             </summary>
         </member>
         <member name="P:CodeImp.DoomBuilder.Properties.Resources.NewMap">
             <summary>
-              Looks up a localized resource of type System.Drawing.Bitmap.
+              Recherche une ressource localisée de type System.Drawing.Bitmap.
             </summary>
         </member>
         <member name="P:CodeImp.DoomBuilder.Properties.Resources.NewScript">
             <summary>
-              Looks up a localized resource of type System.Drawing.Bitmap.
+              Recherche une ressource localisée de type System.Drawing.Bitmap.
             </summary>
         </member>
         <member name="P:CodeImp.DoomBuilder.Properties.Resources.OpenMap">
             <summary>
-              Looks up a localized resource of type System.Drawing.Bitmap.
+              Recherche une ressource localisée de type System.Drawing.Bitmap.
             </summary>
         </member>
         <member name="P:CodeImp.DoomBuilder.Properties.Resources.OpenScript">
             <summary>
-              Looks up a localized resource of type System.Drawing.Bitmap.
+              Recherche une ressource localisée de type System.Drawing.Bitmap.
             </summary>
         </member>
         <member name="P:CodeImp.DoomBuilder.Properties.Resources.Paste">
             <summary>
-              Looks up a localized resource of type System.Drawing.Bitmap.
+              Recherche une ressource localisée de type System.Drawing.Bitmap.
             </summary>
         </member>
         <member name="P:CodeImp.DoomBuilder.Properties.Resources.PasteSpecial">
             <summary>
-              Looks up a localized resource of type System.Drawing.Bitmap.
+              Recherche une ressource localisée de type System.Drawing.Bitmap.
             </summary>
         </member>
         <member name="P:CodeImp.DoomBuilder.Properties.Resources.Prefab">
             <summary>
-              Looks up a localized resource of type System.Drawing.Bitmap.
+              Recherche une ressource localisée de type System.Drawing.Bitmap.
             </summary>
         </member>
         <member name="P:CodeImp.DoomBuilder.Properties.Resources.Prefab2">
             <summary>
-              Looks up a localized resource of type System.Drawing.Bitmap.
+              Recherche une ressource localisée de type System.Drawing.Bitmap.
             </summary>
         </member>
         <member name="P:CodeImp.DoomBuilder.Properties.Resources.Properties">
             <summary>
-              Looks up a localized resource of type System.Drawing.Bitmap.
+              Recherche une ressource localisée de type System.Drawing.Bitmap.
             </summary>
         </member>
         <member name="P:CodeImp.DoomBuilder.Properties.Resources.Question">
             <summary>
-              Looks up a localized resource of type System.Drawing.Bitmap.
+              Recherche une ressource localisée de type System.Drawing.Bitmap.
             </summary>
         </member>
         <member name="P:CodeImp.DoomBuilder.Properties.Resources.Redo">
             <summary>
-              Looks up a localized resource of type System.Drawing.Bitmap.
+              Recherche une ressource localisée de type System.Drawing.Bitmap.
             </summary>
         </member>
         <member name="P:CodeImp.DoomBuilder.Properties.Resources.SaveAll">
             <summary>
-              Looks up a localized resource of type System.Drawing.Bitmap.
+              Recherche une ressource localisée de type System.Drawing.Bitmap.
             </summary>
         </member>
         <member name="P:CodeImp.DoomBuilder.Properties.Resources.SaveMap">
             <summary>
-              Looks up a localized resource of type System.Drawing.Bitmap.
+              Recherche une ressource localisée de type System.Drawing.Bitmap.
             </summary>
         </member>
         <member name="P:CodeImp.DoomBuilder.Properties.Resources.SaveScript">
             <summary>
-              Looks up a localized resource of type System.Drawing.Bitmap.
+              Recherche une ressource localisée de type System.Drawing.Bitmap.
             </summary>
         </member>
         <member name="P:CodeImp.DoomBuilder.Properties.Resources.Script2">
             <summary>
-              Looks up a localized resource of type System.Drawing.Bitmap.
+              Recherche une ressource localisée de type System.Drawing.Bitmap.
             </summary>
         </member>
         <member name="P:CodeImp.DoomBuilder.Properties.Resources.ScriptCompile">
             <summary>
-              Looks up a localized resource of type System.Drawing.Bitmap.
+              Recherche une ressource localisée de type System.Drawing.Bitmap.
             </summary>
         </member>
         <member name="P:CodeImp.DoomBuilder.Properties.Resources.ScriptConstant">
             <summary>
-              Looks up a localized resource of type System.Byte[].
+              Recherche une ressource localisée de type System.Byte[].
             </summary>
         </member>
         <member name="P:CodeImp.DoomBuilder.Properties.Resources.ScriptError">
             <summary>
-              Looks up a localized resource of type System.Byte[].
+              Recherche une ressource localisée de type System.Byte[].
             </summary>
         </member>
         <member name="P:CodeImp.DoomBuilder.Properties.Resources.ScriptHelp">
             <summary>
-              Looks up a localized resource of type System.Drawing.Bitmap.
+              Recherche une ressource localisée de type System.Drawing.Bitmap.
             </summary>
         </member>
         <member name="P:CodeImp.DoomBuilder.Properties.Resources.ScriptKeyword">
             <summary>
-              Looks up a localized resource of type System.Byte[].
+              Recherche une ressource localisée de type System.Byte[].
             </summary>
         </member>
         <member name="P:CodeImp.DoomBuilder.Properties.Resources.ScriptPalette">
             <summary>
-              Looks up a localized resource of type System.Drawing.Bitmap.
+              Recherche une ressource localisée de type System.Drawing.Bitmap.
             </summary>
         </member>
         <member name="P:CodeImp.DoomBuilder.Properties.Resources.SlimDX_small">
             <summary>
-              Looks up a localized resource of type System.Drawing.Bitmap.
+              Recherche une ressource localisée de type System.Drawing.Bitmap.
             </summary>
         </member>
         <member name="P:CodeImp.DoomBuilder.Properties.Resources.Splash3_small">
             <summary>
-              Looks up a localized resource of type System.Drawing.Bitmap.
+              Recherche une ressource localisée de type System.Drawing.Bitmap.
             </summary>
         </member>
         <member name="P:CodeImp.DoomBuilder.Properties.Resources.Splash3_trans">
             <summary>
-              Looks up a localized resource of type System.Drawing.Bitmap.
+              Recherche une ressource localisée de type System.Drawing.Bitmap.
             </summary>
         </member>
         <member name="P:CodeImp.DoomBuilder.Properties.Resources.Status0">
             <summary>
-              Looks up a localized resource of type System.Drawing.Bitmap.
+              Recherche une ressource localisée de type System.Drawing.Bitmap.
             </summary>
         </member>
         <member name="P:CodeImp.DoomBuilder.Properties.Resources.Status1">
             <summary>
-              Looks up a localized resource of type System.Drawing.Bitmap.
+              Recherche une ressource localisée de type System.Drawing.Bitmap.
             </summary>
         </member>
         <member name="P:CodeImp.DoomBuilder.Properties.Resources.Status10">
             <summary>
-              Looks up a localized resource of type System.Drawing.Bitmap.
+              Recherche une ressource localisée de type System.Drawing.Bitmap.
             </summary>
         </member>
         <member name="P:CodeImp.DoomBuilder.Properties.Resources.Status11">
             <summary>
-              Looks up a localized resource of type System.Drawing.Bitmap.
+              Recherche une ressource localisée de type System.Drawing.Bitmap.
             </summary>
         </member>
         <member name="P:CodeImp.DoomBuilder.Properties.Resources.Status12">
             <summary>
-              Looks up a localized resource of type System.Drawing.Bitmap.
+              Recherche une ressource localisée de type System.Drawing.Bitmap.
             </summary>
         </member>
         <member name="P:CodeImp.DoomBuilder.Properties.Resources.Status2">
             <summary>
-              Looks up a localized resource of type System.Drawing.Bitmap.
+              Recherche une ressource localisée de type System.Drawing.Bitmap.
             </summary>
         </member>
         <member name="P:CodeImp.DoomBuilder.Properties.Resources.Test">
             <summary>
-              Looks up a localized resource of type System.Drawing.Bitmap.
+              Recherche une ressource localisée de type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:CodeImp.DoomBuilder.Properties.Resources.Text">
+            <summary>
+              Recherche une ressource localisée de type System.Drawing.Bitmap.
             </summary>
         </member>
         <member name="P:CodeImp.DoomBuilder.Properties.Resources.treeview">
             <summary>
-              Looks up a localized resource of type System.Drawing.Bitmap.
+              Recherche une ressource localisée de type System.Drawing.Bitmap.
             </summary>
         </member>
         <member name="P:CodeImp.DoomBuilder.Properties.Resources.Undo">
             <summary>
-              Looks up a localized resource of type System.Drawing.Bitmap.
+              Recherche une ressource localisée de type System.Drawing.Bitmap.
             </summary>
         </member>
         <member name="P:CodeImp.DoomBuilder.Properties.Resources.UnknownImage">
             <summary>
-              Looks up a localized resource of type System.Drawing.Bitmap.
+              Recherche une ressource localisée de type System.Drawing.Bitmap.
             </summary>
         </member>
         <member name="P:CodeImp.DoomBuilder.Properties.Resources.ViewBrightness">
             <summary>
-              Looks up a localized resource of type System.Drawing.Bitmap.
+              Recherche une ressource localisée de type System.Drawing.Bitmap.
             </summary>
         </member>
         <member name="P:CodeImp.DoomBuilder.Properties.Resources.ViewColorCeiling">
             <summary>
-              Looks up a localized resource of type System.Drawing.Bitmap.
+              Recherche une ressource localisée de type System.Drawing.Bitmap.
             </summary>
         </member>
         <member name="P:CodeImp.DoomBuilder.Properties.Resources.ViewColorFloor">
             <summary>
-              Looks up a localized resource of type System.Drawing.Bitmap.
+              Recherche une ressource localisée de type System.Drawing.Bitmap.
             </summary>
         </member>
         <member name="P:CodeImp.DoomBuilder.Properties.Resources.ViewColorThing">
             <summary>
-              Looks up a localized resource of type System.Drawing.Bitmap.
+              Recherche une ressource localisée de type System.Drawing.Bitmap.
             </summary>
         </member>
         <member name="P:CodeImp.DoomBuilder.Properties.Resources.ViewNormal">
             <summary>
-              Looks up a localized resource of type System.Drawing.Bitmap.
+              Recherche une ressource localisée de type System.Drawing.Bitmap.
             </summary>
         </member>
         <member name="P:CodeImp.DoomBuilder.Properties.Resources.ViewTextureCeiling">
             <summary>
-              Looks up a localized resource of type System.Drawing.Bitmap.
+              Recherche une ressource localisée de type System.Drawing.Bitmap.
             </summary>
         </member>
         <member name="P:CodeImp.DoomBuilder.Properties.Resources.ViewTextureFloor">
             <summary>
-              Looks up a localized resource of type System.Drawing.Bitmap.
+              Recherche une ressource localisée de type System.Drawing.Bitmap.
             </summary>
         </member>
         <member name="P:CodeImp.DoomBuilder.Properties.Resources.Warning">
             <summary>
-              Looks up a localized resource of type System.Drawing.Bitmap.
+              Recherche une ressource localisée de type System.Drawing.Bitmap.
             </summary>
         </member>
         <member name="P:CodeImp.DoomBuilder.Properties.Resources.WarningLarge">
             <summary>
-              Looks up a localized resource of type System.Drawing.Bitmap.
+              Recherche une ressource localisée de type System.Drawing.Bitmap.
             </summary>
         </member>
         <member name="P:CodeImp.DoomBuilder.Properties.Resources.WarningOff">
             <summary>
-              Looks up a localized resource of type System.Drawing.Bitmap.
+              Recherche une ressource localisée de type System.Drawing.Bitmap.
             </summary>
         </member>
         <member name="P:CodeImp.DoomBuilder.Properties.Resources.Zoom">
             <summary>
-              Looks up a localized resource of type System.Drawing.Bitmap.
+              Recherche une ressource localisée de type System.Drawing.Bitmap.
             </summary>
         </member>
         <member name="P:CodeImp.DoomBuilder.Properties.Resources.Zoom_arrowup">
             <summary>
-              Looks up a localized resource of type System.Drawing.Bitmap.
+              Recherche une ressource localisée de type System.Drawing.Bitmap.
             </summary>
         </member>
         <member name="F:CodeImp.DoomBuilder.ErrorType.Error">
@@ -5235,6 +5301,21 @@
         <member name="M:CodeImp.DoomBuilder.ZDoom.ActorStructure.GetFlagValue(System.String,System.Boolean)">
             <summary>
             This returns the status of a flag.
+            </summary>
+        </member>
+        <member name="M:CodeImp.DoomBuilder.ZDoom.ActorStructure.HasState(System.String)">
+            <summary>
+            This checks if a state has been defined.
+            </summary>
+        </member>
+        <member name="M:CodeImp.DoomBuilder.ZDoom.ActorStructure.GetState(System.String)">
+            <summary>
+            This returns a specific state, or null when the state can't be found.
+            </summary>
+        </member>
+        <member name="M:CodeImp.DoomBuilder.ZDoom.ActorStructure.GetAllStates">
+            <summary>
+            This creates a list of all states, also those inherited from the base class.
             </summary>
         </member>
         <member name="M:CodeImp.DoomBuilder.ZDoom.ActorStructure.CheckActorSupported">

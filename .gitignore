@@ -4,3 +4,8 @@
 /Source/Core/obj
 UpgradeLog.htm
 *.force
+*.resources
+/Source/Plugins/BuilderModes/obj/x86
+/Source/Plugins/CopyPasteSectorProps/obj/x86
+/Source/Plugins/ImageDrawingExample/obj/x86
+/Source/Plugins/Statistics/obj/x86
