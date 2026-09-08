@@ -61,6 +61,11 @@ namespace CodeImp.DoomBuilder.VisualModes
 		// Options
 		private bool processgeometry;
 		private bool processthings;
+
+		// Mouse position captured from the outgoing ClassicMode, used to spawn
+		// the camera under the cursor instead of at the player 1 start.
+		private static Vector2D capturedmousemappos;
+		private static bool capturedmousevalid;
 		
 		// Input
 		private bool keyforward;
@@ -111,6 +116,27 @@ namespace CodeImp.DoomBuilder.VisualModes
 			this.visiblethings = new List<VisualThing>(100);
 			this.processgeometry = true;
 			this.processthings = true;
+
+			// Capture the mouse position from the outgoing classic mode
+			if(General.Editing.Mode is ClassicMode)
+			{
+				ClassicMode oldmode = (ClassicMode)General.Editing.Mode;
+				if(oldmode.IsMouseInside)
+				{
+					capturedmousemappos = oldmode.MouseMapPos;
+					capturedmousevalid = true;
+				}
+				else
+				{
+					// Cursor was over a panel/toolbar/outside the display.
+					capturedmousevalid = false;
+				}
+			}
+			else
+			{
+				// Coming from something other than a classic mode.
+				capturedmousevalid = false;
+			}
 		}
 		
 		// Disposer
@@ -143,8 +169,18 @@ namespace CodeImp.DoomBuilder.VisualModes
 		public override void OnEngage()
 		{
 			base.OnEngage();
-			
-			General.Map.VisualCamera.PositionAtThing();
+
+			// Prefer spawning the camera under the mouse cursor position else at the player start
+			bool positioned = false;
+
+			if(capturedmousevalid)
+				positioned = PositionCameraAtMapPosition(capturedmousemappos);
+
+			// fresh classic-mode cursor position doesn't silently reuse a stale one.
+			capturedmousevalid = false;
+
+			if(!positioned)
+				General.Map.VisualCamera.PositionAtThing();
 			
 			// Update the used textures
 			General.Map.Data.UpdateUsedTextures();
@@ -155,6 +191,38 @@ namespace CodeImp.DoomBuilder.VisualModes
 			// Start special input mode
 			General.Interface.EnableProcessing();
 			General.Interface.StartExclusiveMouseInput();
+		}
+
+		// Check position
+		private bool PositionCameraAtMapPosition(Vector2D pos)
+		{
+			Linedef nld = General.Map.Map.NearestLinedef(pos);
+			if(nld == null) return false;
+
+			Sector s;
+			if(nld.SideOfLine(pos) < 0)
+				s = (nld.Front != null) ? nld.Front.Sector : null;
+			else
+				s = (nld.Back != null) ? nld.Back.Sector : null;
+
+			// One-sided line?
+			if(s == null)
+				s = (nld.Front != null) ? nld.Front.Sector : ((nld.Back != null) ? nld.Back.Sector : null);
+
+			if(s == null) return false;
+
+			float floor = s.FloorHeight;
+			float ceiling = s.CeilHeight;
+			float z = floor + VisualCamera.THING_Z_OFFSET;
+
+			// Don't punch through a low ceiling. Guard against broken sectors
+			// where the ceiling is at or below the floor.
+			float maxz = ceiling - 4f;
+			if(maxz > floor && z > maxz) z = maxz;
+
+			General.Map.VisualCamera.Position = new Vector3D(pos.x, pos.y, z);
+			General.Map.VisualCamera.Sector = s;
+			return true;
 		}
 
 		// Mode is disengaged
