@@ -156,6 +156,7 @@ namespace CodeImp.DoomBuilder.Windows
 
 		// Updating
 		private int lockupdatecount;
+		private bool mapchanged;
 		
 		#endregion
 
@@ -331,17 +332,8 @@ namespace CodeImp.DoomBuilder.Windows
 		// This updates all menus for the current status
 		internal void UpdateInterface()
 		{
-			// Map opened?
-			if(General.Map != null)
-			{
-				// Show map name and filename in caption
-				this.Text = General.Map.FileTitle + " (" + General.Map.Options.CurrentName + ") - " + Application.ProductName;
-			}
-			else
-			{
-				// Show normal caption
-				this.Text = Application.ProductName;
-			}
+			// Update the window title
+			UpdateTitle();
 
 			// Update the status bar
 			UpdateStatusbar();
@@ -356,6 +348,28 @@ namespace CodeImp.DoomBuilder.Windows
 			UpdateToolbar();
 			UpdateSkills();
 			UpdateHelpMenu();
+		}
+
+		private void UpdateTitle()
+		{
+			// Map opened?
+			if(General.Map != null)
+			{
+				// Show map name and filename in caption
+				this.Text = (mapchanged ? "\u25CF " : "") + General.Map.FileTitle + " (" + General.Map.Options.CurrentName + ") - " + Application.ProductName;
+			}
+			else
+			{
+				// Show normal caption
+				this.Text = Application.ProductName;
+			}
+		}
+
+		internal void UpdateMapChangedStatus()
+		{
+			if(General.Map == null || General.Map.IsChanged == mapchanged) return;
+			mapchanged = General.Map.IsChanged;
+			UpdateTitle();
 		}
 		
 		// Generic event that invokes the tagged action

@@ -104,7 +104,7 @@ namespace CodeImp.DoomBuilder
 		public MapOptions Options { get { return options; } }
 		public MapSet Map { get { return map; } }
 		public DataManager Data { get { return data; } }
-		public bool IsChanged { get { return changed | CheckScriptChanged(); } set { changed |= value; } }
+		public bool IsChanged { get { return changed | CheckScriptChanged(); } set { changed |= value; General.MainWindow.UpdateMapChangedStatus(); } }
 		public bool IsDisposed { get { return isdisposed; } }
 		internal D3DDevice Graphics { get { return graphics; } }
 		public IRenderer2D Renderer2D { get { return renderer2d; } }
@@ -314,6 +314,7 @@ namespace CodeImp.DoomBuilder
 			// Success
 			this.changed = false;
 			General.WriteLogLine("Map creation done");
+			General.MainWindow.UpdateMapChangedStatus();
 			return true;
 		}
 
@@ -437,6 +438,7 @@ namespace CodeImp.DoomBuilder
 			// Success
 			this.changed = false;
 			General.WriteLogLine("Map loading done");
+			General.MainWindow.UpdateMapChangedStatus();
 			return true;
 		}
 		
@@ -717,6 +719,7 @@ namespace CodeImp.DoomBuilder
 			
 			// Success!
 			General.WriteLogLine("Map saving done");
+			General.MainWindow.UpdateMapChangedStatus();
 			return success;
 		}
 		
