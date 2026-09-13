@@ -22,3 +22,12 @@ Build/Plugins/Statistics.dll
 Build/Plugins/TagRange.dll
 Build/Plugins/USDF.dll
 Build/Plugins/WadAuthorMode.dll
+/Source/Plugins/TagRange/obj
+/Source/Plugins/USDF/obj
+/Source/Plugins/USDF/obj
+/Source/Plugins/USDF/obj
+/Source/Plugins/WadAuthorMode/obj
+/Source/Plugins/WadAuthorMode/obj
+/Source/Plugins/CommentsPanel/obj
+Build/Builder.xml
+Build/Builder.exe
