@@ -9,3 +9,7 @@ UpgradeLog.htm
 /Source/Plugins/CopyPasteSectorProps/obj/x86
 /Source/Plugins/ImageDrawingExample/obj/x86
 /Source/Plugins/Statistics/obj/x86
+/Backup
+Source/Plugins/TagRange/obj/x86/Release/TagRange.csproj.FileListAbsolute.txt
+Source/Plugins/CommentsPanel/obj/x86/Release/CommentsPanel.csproj.FileListAbsolute.txt
+Source/Plugins/GZDoomEditing/obj/x86/Release/GZDoomEditing.csproj.FileListAbsolute.txt
