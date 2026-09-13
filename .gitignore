@@ -14,3 +14,11 @@ Source/Plugins/TagRange/obj/x86/Release/TagRange.csproj.FileListAbsolute.txt
 Source/Plugins/CommentsPanel/obj/x86/Release/CommentsPanel.csproj.FileListAbsolute.txt
 Source/Plugins/GZDoomEditing/obj/x86/Release/GZDoomEditing.csproj.FileListAbsolute.txt
 *.pdb
+Build/Plugins/BuilderModes.dll
+Build/Plugins/CommentsPanel.dll
+Build/Plugins/CopyPasteSectorProps.dll
+Build/Plugins/ImageDrawingExample.dll
+Build/Plugins/Statistics.dll
+Build/Plugins/TagRange.dll
+Build/Plugins/USDF.dll
+Build/Plugins/WadAuthorMode.dll
