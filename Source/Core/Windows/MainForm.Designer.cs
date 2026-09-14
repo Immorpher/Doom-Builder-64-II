@@ -68,6 +68,7 @@ namespace CodeImp.DoomBuilder.Windows
             this.itempastespecial = new System.Windows.Forms.ToolStripMenuItem();
             this.itemsnaptogrid = new System.Windows.Forms.ToolStripMenuItem();
             this.itemautomerge = new System.Windows.Forms.ToolStripMenuItem();
+            this.itemfullbrightness = new System.Windows.Forms.ToolStripMenuItem();
             this.seperatoreditgeometry = new System.Windows.Forms.ToolStripSeparator();
             this.itemgridinc = new System.Windows.Forms.ToolStripMenuItem();
             this.itemgriddec = new System.Windows.Forms.ToolStripMenuItem();
@@ -139,6 +140,7 @@ namespace CodeImp.DoomBuilder.Windows
             this.seperatorviews = new System.Windows.Forms.ToolStripSeparator();
             this.buttonsnaptogrid = new System.Windows.Forms.ToolStripButton();
             this.buttonautomerge = new System.Windows.Forms.ToolStripButton();
+            this.buttonfullbrightness = new System.Windows.Forms.ToolStripButton();
             this.seperatorgeometry = new System.Windows.Forms.ToolStripSeparator();
             this.buttontest = new System.Windows.Forms.ToolStripSplitButton();
             this.seperatortesting = new System.Windows.Forms.ToolStripSeparator();
@@ -430,6 +432,7 @@ namespace CodeImp.DoomBuilder.Windows
             this.seperatoreditcopypaste,
             this.itemsnaptogrid,
             this.itemautomerge,
+            this.itemfullbrightness,
             this.seperatoreditgeometry,
             this.itemgridinc,
             this.itemgriddec,
@@ -521,6 +524,17 @@ namespace CodeImp.DoomBuilder.Windows
             this.itemautomerge.Tag = "builder_toggleautomerge";
             this.itemautomerge.Text = "Merge Geometry";
             this.itemautomerge.Click += new System.EventHandler(this.InvokeTaggedAction);
+            // 
+            // itemfullbrightness
+            // 
+            this.itemfullbrightness.Checked = false;
+            this.itemfullbrightness.CheckState = System.Windows.Forms.CheckState.Unchecked;
+            this.itemfullbrightness.Image = global::CodeImp.DoomBuilder.Properties.Resources.FullBrightness;
+            this.itemfullbrightness.Name = "itemfullbrightness";
+            this.itemfullbrightness.Size = new System.Drawing.Size(163, 22);
+            this.itemfullbrightness.Tag = "builder_togglefullbrightness";
+            this.itemfullbrightness.Text = "Toggle Full Brightness";
+            this.itemfullbrightness.Click += new System.EventHandler(this.InvokeTaggedAction);
             // 
             // seperatoreditgeometry
             // 
@@ -950,6 +964,7 @@ namespace CodeImp.DoomBuilder.Windows
             this.seperatorviews,
             this.buttonsnaptogrid,
             this.buttonautomerge,
+            this.buttonfullbrightness,
             this.seperatorgeometry,
             this.buttontest,
             this.seperatortesting});
@@ -1235,6 +1250,19 @@ namespace CodeImp.DoomBuilder.Windows
             this.buttonautomerge.Tag = "builder_toggleautomerge";
             this.buttonautomerge.Text = "Merge Geometry";
             this.buttonautomerge.Click += new System.EventHandler(this.InvokeTaggedAction);
+            // 
+            // buttonfullbrightness
+            // 
+            this.buttonfullbrightness.Checked = false;
+            this.buttonfullbrightness.CheckState = System.Windows.Forms.CheckState.Unchecked;
+            this.buttonfullbrightness.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.buttonfullbrightness.Image = global::CodeImp.DoomBuilder.Properties.Resources.FullBrightness;
+            this.buttonfullbrightness.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.buttonfullbrightness.Name = "buttonfullbrightness";
+            this.buttonfullbrightness.Size = new System.Drawing.Size(23, 22);
+            this.buttonfullbrightness.Tag = "builder_togglefullbrightness";
+            this.buttonfullbrightness.Text = "Toggle Full Brightness";
+            this.buttonfullbrightness.Click += new System.EventHandler(this.InvokeTaggedAction);
             // 
             // seperatorgeometry
             // 
@@ -1785,6 +1813,8 @@ namespace CodeImp.DoomBuilder.Windows
 		private System.Windows.Forms.ToolStripMenuItem itemsnaptogrid;
 		private System.Windows.Forms.ToolStripButton buttonautomerge;
 		private System.Windows.Forms.ToolStripMenuItem itemautomerge;
+		private System.Windows.Forms.ToolStripButton buttonfullbrightness;
+		private System.Windows.Forms.ToolStripMenuItem itemfullbrightness;
         private System.Windows.Forms.ToolStripSeparator seperatormodes;
         private System.Windows.Forms.Timer processor;
         private System.Windows.Forms.ToolStripSeparator seperatorgeometry;

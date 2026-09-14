@@ -62,7 +62,6 @@ namespace CodeImp.DoomBuilder.Rendering
 		private int shaderpass;
 		
 		// Options
-		private bool fullbrightness;
 
         private bool showlightonly; // villsa
 		
@@ -113,7 +112,7 @@ namespace CodeImp.DoomBuilder.Rendering
 
 		public ProjectedFrustum2D Frustum2D { get { return frustum; } }
 		public bool DrawThingCages { get { return renderthingcages; } set { renderthingcages = value; } }
-		public bool FullBrightness { get { return fullbrightness; } set { fullbrightness = value; } }
+		public bool FullBrightness { get { return Renderer.FullBrightness; } set { Renderer.FullBrightness = value; } }
 		public bool ShowSelection { get { return showselection; } set { showselection = value; } }
 		public bool ShowHighlight { get { return showhighlight; } set { showhighlight = value; } }
         public bool ShowLightOnly { get { return showlightonly; } set { showlightonly = value; } }  // villsa
@@ -474,7 +473,7 @@ namespace CodeImp.DoomBuilder.Rendering
 				}
 				
 				// Determine shader pass to use
-				if(fullbrightness) shaderpass = 1; else shaderpass = 0;
+				if(Renderer.FullBrightness) shaderpass = 1; else shaderpass = 0;
 
 				// Create crosshair vertices
 				if(crosshairverts == null)

@@ -188,7 +188,7 @@ namespace CodeImp.DoomBuilder.BuilderModes
 			// styd: setting the color properties (now correctly flagged updateneeded via the
 			// Sector.cs fix) isn't enough by itself — nothing walks dirty sectors on a redraw.
 			// MapSet.Update() is the documented call for "flush any pending sector cache
-			// rebuilds" (see its own XML doc comment), already used by e.g. BrightnessMode
+			// rebuilds" (see its own XML doc comment), already used elsewhere in this codebase
 			// right after changing a sector property. FindReplaceForm calls RedrawDisplay()
 			// right after Find() returns, so doing this here means the screen is already
 			// correct by the time that redraw happens.

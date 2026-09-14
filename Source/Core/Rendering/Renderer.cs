@@ -37,6 +37,9 @@ namespace CodeImp.DoomBuilder.Rendering
 		// Graphics
 		protected D3DDevice graphics;
 
+		// Full brightness (global 2D + 3D toggle)
+		protected static bool fullbrightness;
+
 		// Disposing
 		protected bool isdisposed = false;
 
@@ -46,6 +49,10 @@ namespace CodeImp.DoomBuilder.Rendering
 
 		// Disposing
 		public bool IsDisposed { get { return isdisposed; } }
+
+		// This controls whether sectors are rendered with their real (colored) light
+		// or with plain uncolored brightness, in both the 2D view and the 3D view.
+		public static bool FullBrightness { get { return fullbrightness; } set { fullbrightness = value; } }
 
 		#endregion
 

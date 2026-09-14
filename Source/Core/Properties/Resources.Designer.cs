@@ -273,6 +273,16 @@ namespace CodeImp.DoomBuilder.Properties {
         /// <summary>
         ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap FullBrightness {
+            get {
+                object obj = ResourceManager.GetObject("FullBrightness", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap MissingTexture {
             get {
                 object obj = ResourceManager.GetObject("MissingTexture", resourceCulture);

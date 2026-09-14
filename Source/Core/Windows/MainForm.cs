@@ -2072,6 +2072,7 @@ namespace CodeImp.DoomBuilder.Windows
 			itemmapoptions.Enabled = (General.Map != null);
 			itemsnaptogrid.Enabled = (General.Map != null);
 			itemautomerge.Enabled = (General.Map != null);
+			itemfullbrightness.Enabled = (General.Map != null);
 			itemgridsetup.Enabled = (General.Map != null);
 			itemgridinc.Enabled = (General.Map != null);
 			itemgriddec.Enabled = (General.Map != null);
@@ -2096,6 +2097,8 @@ namespace CodeImp.DoomBuilder.Windows
 			buttonredo.ToolTipText = itemredo.Text;
 			buttonsnaptogrid.Enabled = (General.Map != null);
 			buttonautomerge.Enabled = (General.Map != null);
+			buttonfullbrightness.Enabled = (General.Map != null);
+			buttonfullbrightness.Checked = Renderer.FullBrightness;
 			buttoncut.Enabled = itemcut.Enabled;
 			buttoncopy.Enabled = itemcopy.Enabled;
 			buttonpaste.Enabled = itempaste.Enabled;
@@ -2119,6 +2122,27 @@ namespace CodeImp.DoomBuilder.Windows
 			itemautomerge.Checked = buttonautomerge.Checked;
 			string onoff = buttonautomerge.Checked ? "ON" : "OFF";
 			DisplayStatus(StatusType.Action, "Snap to geometry is now " + onoff + " by default.");
+		}
+
+		// Action to toggle full brightness (real colored sector lighting vs. plain
+		// full-bright), applied to both the 2D view and the 3D view.
+		[BeginAction("togglefullbrightness")]
+		public void ToggleFullBrightness()
+		{
+			Renderer.FullBrightness = !Renderer.FullBrightness;
+			buttonfullbrightness.Checked = Renderer.FullBrightness;
+			itemfullbrightness.Checked = Renderer.FullBrightness;
+			string onoff = Renderer.FullBrightness ? "ON" : "OFF";
+			DisplayStatus(StatusType.Action, "Full Brightness is now " + onoff + ".");
+
+			// Force sector surfaces to recompute their color and redraw the 2D view
+			if(General.Map != null)
+			{
+				foreach(Sector s in General.Map.Map.Sectors)
+					s.UpdateNeeded = true;
+				General.Map.Map.Update();
+				General.Interface.RedrawDisplay();
+			}
 		}
 		
 		#endregion
