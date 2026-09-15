@@ -386,7 +386,7 @@ namespace CodeImp.DoomBuilder.Windows
             // ceilingcolortag
             // 
             this.ceilingcolortag.AllowDecimal = false;
-            this.ceilingcolortag.AllowNegative = false;
+            this.ceilingcolortag.AllowNegative = true;
             this.ceilingcolortag.AllowRelative = true;
             this.ceilingcolortag.ButtonStep = 1;
             this.ceilingcolortag.Location = new System.Drawing.Point(311, 35);
@@ -398,7 +398,7 @@ namespace CodeImp.DoomBuilder.Windows
             // topcolortag
             // 
             this.topcolortag.AllowDecimal = false;
-            this.topcolortag.AllowNegative = false;
+            this.topcolortag.AllowNegative = true;
             this.topcolortag.AllowRelative = true;
             this.topcolortag.ButtonStep = 1;
             this.topcolortag.Location = new System.Drawing.Point(311, 64);
@@ -410,7 +410,7 @@ namespace CodeImp.DoomBuilder.Windows
             // thingcolortag
             // 
             this.thingcolortag.AllowDecimal = false;
-            this.thingcolortag.AllowNegative = false;
+            this.thingcolortag.AllowNegative = true;
             this.thingcolortag.AllowRelative = true;
             this.thingcolortag.ButtonStep = 1;
             this.thingcolortag.Location = new System.Drawing.Point(311, 93);
@@ -422,7 +422,7 @@ namespace CodeImp.DoomBuilder.Windows
             // lowercolortag
             // 
             this.lowercolortag.AllowDecimal = false;
-            this.lowercolortag.AllowNegative = false;
+            this.lowercolortag.AllowNegative = true;
             this.lowercolortag.AllowRelative = true;
             this.lowercolortag.ButtonStep = 1;
             this.lowercolortag.Location = new System.Drawing.Point(311, 122);
@@ -434,7 +434,7 @@ namespace CodeImp.DoomBuilder.Windows
             // floorcolortag
             // 
             this.floorcolortag.AllowDecimal = false;
-            this.floorcolortag.AllowNegative = false;
+            this.floorcolortag.AllowNegative = true;
             this.floorcolortag.AllowRelative = true;
             this.floorcolortag.ButtonStep = 1;
             this.floorcolortag.Location = new System.Drawing.Point(311, 151);
@@ -619,7 +619,7 @@ namespace CodeImp.DoomBuilder.Windows
             // tag
             // 
             this.tag.AllowDecimal = false;
-            this.tag.AllowNegative = false;
+            this.tag.AllowNegative = true;
             this.tag.AllowRelative = true;
             this.tag.ButtonStep = 1;
             this.tag.Location = new System.Drawing.Point(89, 26);

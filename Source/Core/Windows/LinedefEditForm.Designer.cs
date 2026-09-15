@@ -358,7 +358,7 @@ namespace CodeImp.DoomBuilder.Windows
             // mtag
             // 
             this.mtag.AllowDecimal = false;
-            this.mtag.AllowNegative = false;
+            this.mtag.AllowNegative = true;
             this.mtag.AllowRelative = true;
             this.mtag.ButtonStep = 1;
             this.mtag.Location = new System.Drawing.Point(108, 30);
@@ -877,7 +877,7 @@ namespace CodeImp.DoomBuilder.Windows
             // tag
             // 
             this.tag.AllowDecimal = false;
-            this.tag.AllowNegative = false;
+            this.tag.AllowNegative = true;
             this.tag.AllowRelative = true;
             this.tag.ButtonStep = 1;
             this.tag.Location = new System.Drawing.Point(62, 26);
