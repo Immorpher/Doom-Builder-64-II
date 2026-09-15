@@ -1201,8 +1201,8 @@ namespace CodeImp.DoomBuilder.BuilderModes
 			{
                 Lights startlight;
                 Lights endlight;
-                int delta = (255 / orderedselection.Count);
-                int index;
+                float delta = (float)(256.0 / ((float)orderedselection.Count - 1.0));
+                float index;
 
                 // FLOOR
                 startlight = (Lights)General.GetByIndex(orderedselection, 0).FloorColor;
@@ -1212,8 +1212,7 @@ namespace CodeImp.DoomBuilder.BuilderModes
 				// Go for all sectors in between first and last
 				foreach(Sector s in orderedselection)
 				{
-                    s.FloorColor = InterpolateLight(startlight, endlight, index);
-                    s.UpdateNeeded = true;
+                    s.FloorColor = InterpolateLight(startlight, endlight, (int)Math.Round(index));
                     index += delta;
 				}
 
@@ -1225,8 +1224,7 @@ namespace CodeImp.DoomBuilder.BuilderModes
                 // Go for all sectors in between first and last
                 foreach (Sector s in orderedselection)
                 {
-                    s.CeilColor = InterpolateLight(startlight, endlight, index);
-                    s.UpdateNeeded = true;
+                    s.CeilColor = InterpolateLight(startlight, endlight, (int)Math.Round(index));
                     index += delta;
                 }
 
@@ -1238,8 +1236,7 @@ namespace CodeImp.DoomBuilder.BuilderModes
                 // Go for all sectors in between first and last
                 foreach (Sector s in orderedselection)
                 {
-                    s.ThingColor = InterpolateLight(startlight, endlight, index);
-                    s.UpdateNeeded = true;
+                    s.ThingColor = InterpolateLight(startlight, endlight, (int)Math.Round(index));
                     index += delta;
                 }
 
@@ -1251,9 +1248,9 @@ namespace CodeImp.DoomBuilder.BuilderModes
                 // Go for all sectors in between first and last
                 foreach (Sector s in orderedselection)
                 {
-                    s.TopColor = InterpolateLight(startlight, endlight, index);
-                    s.UpdateNeeded = true;
+                    s.TopColor = InterpolateLight(startlight, endlight, (int)Math.Round(index));
                     index += delta;
+					s.UpdateNeeded = true;
                 }
 
                 // BOTTOM
@@ -1264,8 +1261,7 @@ namespace CodeImp.DoomBuilder.BuilderModes
                 // Go for all sectors in between first and last
                 foreach (Sector s in orderedselection)
                 {
-                    s.LowerColor = InterpolateLight(startlight, endlight, index);
-                    s.UpdateNeeded = true;
+                    s.LowerColor = InterpolateLight(startlight, endlight, (int)Math.Round(index));
                     index += delta;
                 }
 			}
