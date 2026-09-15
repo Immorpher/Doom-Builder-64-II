@@ -38,7 +38,7 @@ namespace CodeImp.DoomBuilder.Map
 
         // Properties
         public PixelColor color;
-        public UInt16 tag;
+        public short tag;
         public bool isDirect;   // styd: true if loaded as a direct index (<256), false if actual LIGHTS input (≥256)
 
         // styd: raw LIGHTS-lump index this value was loaded from, only meaningful when
@@ -54,7 +54,7 @@ namespace CodeImp.DoomBuilder.Map
 
         #region ================== Constructor / Disposer
 
-        public Lights(byte r, byte g, byte b, UInt16 tag)
+        public Lights(byte r, byte g, byte b, short tag)
         {
             this.color.r = r;
             this.color.g = g;

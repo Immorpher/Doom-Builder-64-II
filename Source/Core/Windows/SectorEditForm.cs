@@ -293,7 +293,7 @@ namespace CodeImp.DoomBuilder.Windows
 
             if (tagchanged)
             {
-                light.tag = (UInt16)General.Clamp(newtag, General.Map.FormatInterface.MinTag, General.Map.FormatInterface.MaxTag);
+                light.tag = (short)General.Clamp(newtag, General.Map.FormatInterface.MinTag, General.Map.FormatInterface.MaxTag);
                 if (light.tag != 0) light.isDirect = false;
             }
 

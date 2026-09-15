@@ -79,8 +79,8 @@ namespace CodeImp.DoomBuilder.IO
 		public override bool HasNumericLinedefFlags { get { return true; } }
 		public override bool HasNumericThingFlags { get { return true; } }
 		public override bool HasNumericLinedefActivations { get { return true; } }
-		public override int MaxTag { get { return ushort.MaxValue; } }
-		public override int MinTag { get { return ushort.MinValue; } }
+		public override int MaxTag { get { return short.MaxValue; } }
+		public override int MinTag { get { return short.MinValue; } }
         public override int MaxAction { get { return 511; } }
         public override int MinAction { get { return ushort.MinValue; } }
         public override int MaxArgument { get { return 0; } }
@@ -194,7 +194,7 @@ namespace CodeImp.DoomBuilder.IO
 
             l = slight;
             if(s.Tag != 0)
-                l.tag = (UInt16)s.Tag;
+                l.tag = (short)s.Tag;
             slight = l;
 
             if (slight.color.r == slight.color.g &&
@@ -212,7 +212,7 @@ namespace CodeImp.DoomBuilder.IO
             Lights lgt;
 
             lgt = slight;
-            lgt.tag = (UInt16)s.Tag;
+            lgt.tag = (short)s.Tag;
             slight = lgt;
 
             if (slight.color.r == slight.color.g &&
@@ -465,7 +465,7 @@ namespace CodeImp.DoomBuilder.IO
                 lightColors[i].color.g = lightreader.ReadByte();
                 lightColors[i].color.b = lightreader.ReadByte();
                 lightColors[i].color.a = lightreader.ReadByte();
-                lightColors[i].tag = lightreader.ReadUInt16();
+                lightColors[i].tag = (short)lightreader.ReadUInt16();
 
                 // styd: remember which physical LIGHTS-lump slot this entry came from, so
                 // AddLightGetIndex() can restore the exact original sharing on save - see

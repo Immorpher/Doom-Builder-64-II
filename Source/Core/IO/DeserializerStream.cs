@@ -135,7 +135,7 @@ namespace CodeImp.DoomBuilder.IO
             v.color.g = reader.ReadByte();
             v.color.b = reader.ReadByte();
             v.color.a = reader.ReadByte();
-            v.tag = reader.ReadUInt16();
+            v.tag = (short)reader.ReadUInt16();
             v.isDirect = reader.ReadBoolean();   // styd
             v.hasOriginalIndex = reader.ReadBoolean();   // styd
             v.originalIndex = reader.ReadInt32();   // styd
@@ -226,7 +226,7 @@ namespace CodeImp.DoomBuilder.IO
             v.color.g = reader.ReadByte();
             v.color.b = reader.ReadByte();
             v.color.a = reader.ReadByte();
-            v.tag = reader.ReadUInt16();
+            v.tag = (short)reader.ReadUInt16();
             v.isDirect = reader.ReadBoolean();   // styd
             v.hasOriginalIndex = reader.ReadBoolean();   // styd
             v.originalIndex = reader.ReadInt32();   // styd

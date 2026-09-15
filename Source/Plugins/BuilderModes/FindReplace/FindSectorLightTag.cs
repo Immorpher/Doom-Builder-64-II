@@ -128,7 +128,7 @@ namespace CodeImp.DoomBuilder.BuilderModes
 				return objs.ToArray();
 
 			bool doreplace = (replacewith != null);
-			UInt16 newtag = (UInt16)replacetag;
+			short newtag = (short)replacetag;
 
 			// Where to search?
 			ICollection<Sector> list = withinselection ? General.Map.Map.GetSelectedSectors(true) : General.Map.Map.Sectors;
