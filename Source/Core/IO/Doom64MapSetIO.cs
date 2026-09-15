@@ -356,7 +356,7 @@ namespace CodeImp.DoomBuilder.IO
 				angle = Angle2D.DoomToReal(reader.ReadInt16());
 				type = reader.ReadUInt16();
 				flags = reader.ReadUInt16();
-                tag = reader.ReadUInt16();
+                tag = (short)reader.ReadUInt16();
 
 				// Make string flags
 				stringflags = new Dictionary<string, bool>();
@@ -938,7 +938,7 @@ namespace CodeImp.DoomBuilder.IO
 				writer.Write((Int16)Angle2D.RealToDoom(t.Angle));
 				writer.Write((UInt16)t.Type);
 				writer.Write((UInt16)flags);
-                writer.Write((UInt16)t.Tag);
+                writer.Write((short)t.Tag);
 			}
 			
 			// Find insert position and remove old lump
