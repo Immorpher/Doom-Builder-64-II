@@ -1339,6 +1339,7 @@ namespace CodeImp.DoomBuilder.Rendering
 			// Advance the Doom 64 texture scrolling (the flats that move in the game)
 			TextureScroll.Update();
 			SectorGlow.Update();
+			if(General.Map.Data.Animations != null) General.Map.Data.Animations.Update();
 
 			// Rendertargets available?
 			if(surfacetex != null)

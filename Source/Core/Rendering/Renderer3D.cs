@@ -504,6 +504,9 @@ namespace CodeImp.DoomBuilder.Rendering
 			// Advance the Doom 64 texture scrolling (also runs at the game's 30 tics per second)
 			TextureScroll.Update();
 
+			// Advance the Doom 64 texture animations (ANIMDEFS, also 30 tics per second)
+			if(General.Map.Data.Animations != null) General.Map.Data.Animations.Update();
+
 			// Make collections (once, they are reused for every frame)
 			if(geometry == null)
 			{
@@ -764,11 +767,16 @@ namespace CodeImp.DoomBuilder.Rendering
 			{
 				ImageData curtexture;
 
+				// Doom 64 animated textures (ANIMDEFS) show the current frame instead
+				ImageData grouptexture = group.Key;
+				if(doom64mode && (grouptexture != null) && (General.Map.Data.Animations != null))
+					grouptexture = General.Map.Data.Animations.Translate(grouptexture);
+
 				// What texture to use?
-				if(group.Key is UnknownImage)
+				if(grouptexture is UnknownImage)
 					curtexture = General.Map.Data.UnknownTexture3D;
-				else if((group.Key != null) && group.Key.IsImageLoaded && !group.Key.IsDisposed)
-					curtexture = group.Key;
+				else if((grouptexture != null) && grouptexture.IsImageLoaded && !grouptexture.IsDisposed)
+					curtexture = grouptexture;
 				else
 					curtexture = General.Map.Data.Hourglass3D;
 

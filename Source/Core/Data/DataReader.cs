@@ -99,6 +99,9 @@ namespace CodeImp.DoomBuilder.Data
 
         // villsa
         public virtual Playpal LoadThingPalette(string palname) { return null; }
+
+		// This returns the data of a lump (or file) by name, or null when this resource does not have it
+		public virtual Stream GetLumpData(string name) { return null; }
 		
 		#endregion
 

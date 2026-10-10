@@ -48,6 +48,9 @@ namespace CodeImp.DoomBuilder.Data
 		
 		// Data containers
 		private List<DataReader> containers;
+
+		// Doom 64 texture animations (ANIMDEFS)
+		private TextureAnimations animations;
 		
 		// Resource files as they were when the resources were loaded (to detect outside changes)
 		private List<DataLocation> resourcelocations = new List<DataLocation>();
@@ -107,6 +110,9 @@ namespace CodeImp.DoomBuilder.Data
 
         public IDictionary<string, Playpal> ThingPalette { get { return thingpalettes; } } // villsa
 		public PreviewManager Previews { get { return previews; } }
+
+		// The Doom 64 texture animations (ANIMDEFS)
+		internal TextureAnimations Animations { get { return animations; } }
 		public ICollection<ImageData> Textures { get { return textures.Values; } }
 		public ICollection<ImageData> Flats { get { return flats.Values; } }
 		public List<string> TextureNames { get { return texturenames; } }
@@ -387,6 +393,11 @@ namespace CodeImp.DoomBuilder.Data
 			// Sort things
 			foreach(ThingCategory tc in thingcategories) tc.SortIfNeeded();
 
+			// Load the Doom 64 texture animations (ANIMDEFS of the resource with the highest priority)
+			if(animations != null) animations.Dispose();
+			animations = new TextureAnimations();
+			animations.Load(containers, General.Map.Config.D64TextureIndex);
+
 			// Update the used textures
 			General.Map.Data.UpdateUsedTextures();
 			
@@ -430,6 +441,10 @@ namespace CodeImp.DoomBuilder.Data
 			// Dispose preview manager
 			previews.Dispose();
 			previews = null;
+
+			// Dispose the texture animations (they own images that were made from the textures)
+			if(animations != null) animations.Dispose();
+			animations = null;
 
             // Dispose resources
             foreach(KeyValuePair<long, ImageData> i in textures) i.Value.Dispose();
@@ -1018,6 +1033,17 @@ namespace CodeImp.DoomBuilder.Data
 
 			// Output info
 			return counter;
+		}
+
+		// This returns the data of a lump by name from the resource with the highest priority that has it
+		internal Stream GetLumpData(string name)
+		{
+			for(int i = containers.Count - 1; i >= 0; i--)
+			{
+				Stream data = containers[i].GetLumpData(name);
+				if(data != null) return data;
+			}
+			return null;
 		}
 
 		// This returns a specific flat stream

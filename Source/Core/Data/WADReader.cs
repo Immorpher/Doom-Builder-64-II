@@ -199,6 +199,21 @@ namespace CodeImp.DoomBuilder.Data
 
 		#endregion
 
+		#region ================== Lumps
+
+		// This returns the data of a lump by name
+		public override Stream GetLumpData(string name)
+		{
+			// Error when suspended
+			if(issuspended) throw new Exception("Data reader is suspended");
+
+			Lump lump = file.FindLump(name);
+			if(lump != null) return new MemoryStream(lump.Stream.ReadAllBytes());
+			return null;
+		}
+
+		#endregion
+
 		#region ================== Colormaps
 
 		// This loads the textures

@@ -195,6 +195,14 @@ namespace CodeImp.DoomBuilder.Data
 			return new List<ImageData>(images.Values);
 		}
 		
+		// This returns the data of a file in the root of the resource by name (without extension)
+		public override Stream GetLumpData(string name)
+		{
+			string[] found = GetAllFilesWithTitle("", name, false);
+			if((found != null) && (found.Length > 0)) return LoadFile(found[found.Length - 1]);
+			return null;
+		}
+
 		// This returns the patch names from the PNAMES lump
 		// A directory resource does not support this lump, but the wads in the directory may contain this lump
 		public override PatchNames LoadPatchNames()

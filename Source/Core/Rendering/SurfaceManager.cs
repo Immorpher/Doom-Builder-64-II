@@ -79,6 +79,9 @@ namespace CodeImp.DoomBuilder.Rendering
 		private List<SurfaceEntry> scrollentries = new List<SurfaceEntry>();
 		private bool scrollceiling;
 		private bool scrolltextured;
+
+		// True when a flat that was drawn is animated by the ANIMDEFS (Doom 64 texture animations)
+		private bool animatedtextures;
 		
 		// This is set to true when the resources have been unloaded
 		private bool resourcesunloaded;
@@ -88,7 +91,7 @@ namespace CodeImp.DoomBuilder.Rendering
 		#region ================== Properties
 
 		// True when the last render included sectors with moving flats or light effects (so the 2D view has to keep redrawing)
-		public bool HasAnimatedSurfaces { get { return scrollentries.Count > 0; } }
+		public bool HasAnimatedSurfaces { get { return (scrollentries.Count > 0) || animatedtextures; } }
 
 		#endregion
 
@@ -585,6 +588,7 @@ namespace CodeImp.DoomBuilder.Rendering
 			surfaces = new Dictionary<ImageData, List<SurfaceEntry>>();
 			surfacevertexoffsetmul = 0;
 			scrollentries.Clear();
+			animatedtextures = false;
 			scrollceiling = false;
 			scrolltextured = true;
 			
@@ -611,6 +615,7 @@ namespace CodeImp.DoomBuilder.Rendering
 			surfaces = new Dictionary<ImageData, List<SurfaceEntry>>();
 			surfacevertexoffsetmul = 1;
 			scrollentries.Clear();
+			animatedtextures = false;
 			scrollceiling = true;
 			scrolltextured = true;
 			
@@ -637,6 +642,7 @@ namespace CodeImp.DoomBuilder.Rendering
 			surfaces = new Dictionary<ImageData, List<SurfaceEntry>>();
 			surfacevertexoffsetmul = 0;
 			scrollentries.Clear();
+			animatedtextures = false;
 			scrollceiling = false;
 			scrolltextured = false;
 			
@@ -694,6 +700,14 @@ namespace CodeImp.DoomBuilder.Rendering
 					// Is the texture loaded?
 					if(img.IsImageLoaded && !img.LoadFailed)
 					{
+						// Doom 64 animated textures (ANIMDEFS) show the current frame instead
+						TextureAnimations anims = General.Map.Data.Animations;
+						if((anims != null) && anims.IsAnimated(img))
+						{
+							animatedtextures = true;
+							img = anims.Translate(img);
+						}
+						
 						if(img.Texture == null) img.CreateTexture();
 					}
 					else
